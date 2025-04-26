@@ -1,10 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ChatForm from "./ChatForm";
 import ChatMessage from "./ChatMessage";
 import ChatbotIcon from "./ChatbotIcon";
 import "../../../styles/chat.css";
-import questions from "@/questions/Question"; // Static mock data for now
+import questions from "@/questions/Questions"; // Importing questions for the chatbot
 
 const ChatBox = () => {
   const [chatHistory, setChatHistory] = useState([
@@ -12,10 +12,16 @@ const ChatBox = () => {
       role: "model",
       text: "Hey there 👋 How can I help you today?",
       questionObj: {
-        type: "text"
-      }
+        type: "text",
+      },
     },
   ]);
+
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatHistory]); // Auto scroll when chat history is updated
 
   return (
     <div className="chatbot-popup">
@@ -33,8 +39,10 @@ const ChatBox = () => {
             chat={chat}
             chatHistory={chatHistory}
             setChatHistory={setChatHistory}
+            bottomRef={bottomRef} // Pass bottomRef to each message component
           />
         ))}
+        <div ref={bottomRef} />
       </div>
 
       <div className="chat-footer">
@@ -43,4 +51,5 @@ const ChatBox = () => {
     </div>
   );
 };
+
 export default ChatBox;
