@@ -108,6 +108,7 @@ const ChatMessage = ({ chat, chatHistory, setChatHistory, bottomRef }) => {
                 type="checkbox"
                 name={`checkbox-${chat.text}`}
                 value={opt}
+                disabled={isAnswered}
               />
               {opt}
             </label>

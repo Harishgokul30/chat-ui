@@ -3,15 +3,12 @@ import { useState } from "react";
 import ChatBox from "@/app/components/Chat/ChatBox";
 
 const ChatPage = () => {
-  // Track the current question or other dynamic data
-  const [currentQuestion, setCurrentQuestion] = useState(0); // Start at the first question
+  const [currentQuestion, setCurrentQuestion] = useState(0);
 
   return (
-    <div>
-    
+    <div className="page-container">
       <ChatBox currentQuestion={currentQuestion} setCurrentQuestion={setCurrentQuestion} />
     </div>
   );
 };
-
 export default ChatPage;

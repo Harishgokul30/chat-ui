@@ -10,7 +10,7 @@ const ChatBox = () => {
   const [chatHistory, setChatHistory] = useState([
     {
       role: "model",
-      text: "Hey there 👋 How can I help you today?",
+      text: "Hey 👋 Let start the interview?",
       questionObj: {
         type: "text",
       },
